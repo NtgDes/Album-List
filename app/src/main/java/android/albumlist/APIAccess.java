@@ -1,7 +1,5 @@
 package android.albumlist;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -46,7 +44,10 @@ public class APIAccess {
 
 		@Override
 		protected void onPostExecute(String response) {
-			if (response==null) return;
+			if (response==null) {
+				callBackResponseList.List(null);//callback with null to indicate some error
+				return;
+			}
 
 			//format and add the response to list of type Album
 			try {
@@ -68,7 +69,6 @@ public class APIAccess {
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-
 		}
 
 	}

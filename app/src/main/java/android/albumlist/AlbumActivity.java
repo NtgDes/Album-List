@@ -32,15 +32,10 @@ public class AlbumActivity extends AppCompatActivity {
 		albumsViewModel.getAlbums().observe(this, new Observer<List<Album>>() {
 			@Override
 			public void onChanged(List<Album> albums) {
-				Toast.makeText(AlbumActivity.this,"test ",Toast.LENGTH_LONG).show();
-
 				if(albums!=null)recyclerView.setAdapter(new RecycleViewAdaptor(albums));
 			}
 		});
 	}
-
-
-
 	class RecycleViewAdaptor extends RecyclerView.Adapter<RecycleViewAdaptor.AlbumView>{
 		List<Album> Albums;
 		public RecycleViewAdaptor(List<Album> albums) {

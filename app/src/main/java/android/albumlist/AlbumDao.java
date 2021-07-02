@@ -11,9 +11,6 @@ import java.util.List;
 @Dao
 public interface AlbumDao {
 	@Insert
-	void Insert(Album album);
-
-	@Insert
 	void Insert(List<Album> albums);
 
 	@Query("DELETE FROM Album")
@@ -21,4 +18,7 @@ public interface AlbumDao {
 
 	@Query("SELECT * FROM Album ORDER BY title")
 	LiveData<List<Album>> getAlbumList();
+
+	@Query("SELECT COUNT(*) FROM album")
+	int count();
 }
